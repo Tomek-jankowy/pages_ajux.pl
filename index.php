@@ -1,3 +1,12 @@
+<?php
+    function error($error_num)
+    {
+        if($error_num=0)echo 'Your message has been sent';
+        else if($error_num=1)echo "Your e-mail isn't valid";
+        else if($error_num=2)echo "You didn't enter the message";
+        else if($error_num=3)echo 'Something went wrong please try again';
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,7 +46,7 @@
             <div class="navbar-collapse colapse text-center" id="navbar">
                 <!-- <button class="btn btn-lg col-md-1 offset-sm-0 offset-md-1 offset-lg-2 offset-lx-3">Englisz</button> -->
                 <ul class="col-md-9 offset-md-2 navbar-nav d-flex justify-content-end" >
-                    <li class="nav-item col-lg-2"><button class="btn btn-lg">Englisz</button></li>
+                    <li class="nav-item col-lg-2"><button class="btn btn-lg"></button></li>
                     <li class="nav-item col-lg-2 offset-sm-0 offset-md-1 offset-lg-3 "><a href="#" class="nav-link btn btn-lg">Blog</a></li>
                     <li class="nav-item col-lg-2"><a href="#" class="nav-link btn btn-lg">Porojects</a></li>
                     <li class="nav-item col-lg-2"><a href="#" class="nav-link btn btn-lg">About me</a></li>
@@ -122,22 +131,19 @@
                 <div class="col-11 col-md-3 offset-1 ">3</div>
             </div> -->
 
-            <div class="row">
-                <div class="col-12">
+            <div class="row d-flex justify-content-center" style="background-color: #fff;">
+                <div class="col-12 col-md-6">
                     <p><h3>Contact me</h3></p>
                     <p>Please, feel free to ask me anything! There is no wrong questions! It would be a pleasure for me to answer!</p>
-                    <form>
-                        <div class="form-group">
+                    <div class="text-danger" ><?php if(isset($_GET['error']))error($_GET['error']) ?></div>
+                    <form action="contact.php" method="POST">
+                        <div class="form-group col-md-5">
                             <label for="email">Your e-mail</label>
                             <input class="form-control" type="email" id="email" name="email">
                         </div>
                         <div class="form-group">
-                            <label for="tel">Phone number</label>
-                            <input class="form-control" type="tel" id="tel" name="tel">
-                        </div>
-                        <div class="form-group">
                             <label for="textarea">Message</label>
-                            <textarea class="form-control" id="textarea" name="textarea"></textarea>
+                            <textarea class="form-control" id="textarea" name="message"></textarea>
                         </div>
                         
                         
@@ -147,23 +153,22 @@
                 </div>
             </div>
 
-            <div class="row">
-                <footer>
+            <div class="row d-flex mt-5" style="background-color: #a0a0a0;">
+                <footer class="col-12">
                     <div>
-                        <div id="logo" class="col-1 offset-1">
-                            <img src="img/logo.png">
+                        <div id="logo" class="col-2 float-left d-flex mt-4">
+                            <img src="img/logo.png" height="100" width="100">
                         </div>
-                        <div id="content" class="col-9">
-                            <div class="row " >
-                                <div class="col-2 d-flex justify-content-start"><div ><p>Contact</p></div></div>
-                                <div class="col-2 d-flex justify-content-end"><div ><p>Share this</p></div></div>   
-                            </div>
-                            <div class="row">
-                                <hr>
-                            </div>
-                            <div class="row">
-                                fdsfdsfs
-                            </div>
+                        <div id="content" class="col-8 float-left">
+                            <div><span class="d-flex mt-2 justify-content-start">Contact</span><span class="d-flex justify-content-end">Share this</span></div> 
+                            <hr>
+                            <p>
+                                <span class="d-flex float-left ml-5">Agnieszka Jankowy</span> 
+                                <span class="d-flex float-left ml-5">tel: +48698765951</span> 
+                                <span class="d-flex float-left ml-5 mr-5">e-mail: a.jankowy035@gmail.com</span>
+                                <a href="" target="blank"><div class="d-flex float-left ml-5 mb-3"><img src="img/behance.png" width="45" height="45"></div></a>
+                                <a href="https://linkedin.com/in/agnieszka-jankowy-9883771a8/" target="blank"><div class="d-flex float-left ml-3 mb-3"><img src="img/ilinkedin.png" width="45" height="45"></div></a>
+                            </p>
                         </div>
                     </div>
                 </footer>
